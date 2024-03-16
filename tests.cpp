@@ -3,67 +3,62 @@
 #include "catch.hpp"
 #include "main.hpp"
 // tests for exercise 1
-TEST_CASE("Ex1 getRdnum()", "[example]")
+TEST_CASE("Ex1 ", "[Test 1]")
 {
-	int result = 1;
-	int tmp, fault;
+	int n1, n2, n3;
+	float f1, f2;
+	int ret1;
+	float ret2;
 
-	srand(time(0));
-	for (int i = 0; i < 20; i++)
-	{
-		tmp = getRdnum();
-		cout << tmp << "\t";
-		if ((tmp <= 0) || (tmp > 10))
-		{
-			fault = tmp;
-			result = 0;
-		}
-	}
-	cout << endl;
-	INFO("Your random number is " << fault);
-	INFO("Your random number shoub be between 1 and 10");
-	REQUIRE(result == 1);
+	n1 = 20;
+	n2 = 10;
+	n3 = 15;
+
+	cout << "The three values are " << n1 << "\t" << n2 << "\t" << n3 << endl;
+
+	ret1 = myCompare(n1);
+	cout << " Call myCompare(n1) " << ret1 << endl;
+	REQUIRE(ret1 == 1);
+	ret1 = myCompare(n1, n2);
+	REQUIRE(ret1 == n1);
+	cout << " Call myCompare(n1, n2) " << ret1 << endl;
+	ret1 = myCompare(n1, n2, n3);
+	REQUIRE(ret1 == n3);
+	cout << " Call myCompare(n1, n2, n3) " << ret1 << endl;
+	f1 = 19.3456;
+	f2 = 21.9876;
+	ret2 = myCompare(f1, f2);
+	cout << " Call float myCompare(n1, n2) " << ret2 << endl;
+	REQUIRE(ret2 > 2.6);
+	REQUIRE(ret2 < 2.7);
 }
 // tests for exercise 2
-TEST_CASE("Ex2 getRdnum(21, 25)", "[example]")
+TEST_CASE("Ex2 ", "[Test 2]")
 {
-	int result = 1;
-	int tmp, fault;
-	srand(time(0));
-	for (int i = 0; i < 20; i++)
-	{
+	int n1, n2, n3;
+	float f1, f2;
+	int ret1;
+	float ret2;
 
-		tmp = getRdnum(20, 25);
-		cout << tmp << "\t";
-		if ((tmp < 21) || (tmp > 25))
-		{
-			fault = tmp;
-			result = 0;
-		}
-	}
-	cout << endl;
-	INFO("Your random number is " << fault);
-	INFO("Your random number shoub be between 21 and 25");
-	REQUIRE(result == 1);
-}
-// tests for exercise 3
-TEST_CASE("Ex3: getRdnum(5)", "[example]")
-{
-	int result = 1;
-	int tmp, fault;
-	srand(time(0));
-	for (int i = 0; i < 20; i++)
-	{
-		tmp = getRdnum(5);
-		cout << tmp << "\t";
-		if ((tmp <= 0) || (tmp > 5))
-		{
-			fault = tmp;
-			result = 0;
-		}
-	}
-	cout << endl;
-	INFO("Your random number is " << fault);
-	INFO("Your random number shoub be between 1 and 5");
-	REQUIRE(result == 1);
+	n1 = -10;
+	n2 = 15;
+	n3 = 20;
+
+	cout << "The three values are " << n1 << "\t" << n2 << "\t" << n3 << endl;
+
+	ret1 = myCompare(n1);
+	cout << " Call myCompare(n1) " << ret1 << endl;
+	REQUIRE(ret1 == 0);
+	ret1 = myCompare(n1, n2);
+	REQUIRE(ret1 == n2);
+	cout << " Call myCompare(n1, n2) " << ret1 << endl;
+	ret1 = myCompare(n1, n2, n3);
+	REQUIRE(ret1 == n2);
+	cout << " Call myCompare(n1, n2, n3) " << ret1 << endl;
+	f2 = 19.3456;
+	f1 = 21.9876;
+	ret2 = myCompare(f1, f2);
+	cout << " Call float myCompare(n1, n2) " << ret2 << endl;
+	REQUIRE(ret2 > 2.6);
+	REQUIRE(ret2 < 2.7);
 }
